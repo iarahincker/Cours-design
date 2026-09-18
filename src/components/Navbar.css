@@ -16,6 +16,8 @@
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--color-ink);
 }
 
 .navbar__links {
@@ -39,7 +41,7 @@
 }
 
 .navbar__link:hover,
-.navbar__link[aria-current='page'] {
+.navbar__link--active {
   color: var(--color-ink);
 }
 
@@ -55,7 +57,7 @@
 }
 
 .navbar__link:hover::after,
-.navbar__link[aria-current='page']::after {
+.navbar__link--active::after {
   right: 0;
 }
 

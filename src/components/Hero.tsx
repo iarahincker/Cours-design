@@ -1,8 +1,10 @@
 import { Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import './Hero.css'
 
 const Scene = lazy(() => import('./scene/Scene'))
+const MotionLink = motion.create(Link)
 
 const container = {
   hidden: {},
@@ -60,17 +62,17 @@ function Hero() {
         </motion.p>
 
         <motion.div className="hero__actions" variants={item}>
-          <motion.a
-            href="#cours"
+          <MotionLink
+            to="/cours"
             className="hero__button"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
           >
             Découvrir les cours
-          </motion.a>
-          <a href="#projets" className="hero__button hero__button--ghost">
+          </MotionLink>
+          <Link to="/projets" className="hero__button hero__button--ghost">
             Voir les projets
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
 

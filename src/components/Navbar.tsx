@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion'
+import { NavLink, Link } from 'react-router-dom'
 import './Navbar.css'
 
-const LINKS = ['Accueil', 'Cours', 'Projets', 'Ressources']
+const LINKS = [
+  { label: 'Accueil', to: '/' },
+  { label: 'Cours', to: '/cours' },
+  { label: 'Projets', to: '/projets' },
+  { label: 'Ressources', to: '/ressources' },
+]
 
 function Navbar() {
   return (
@@ -11,24 +17,28 @@ function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
     >
-      <span className="navbar__mark">CDD.</span>
+      <Link to="/" className="navbar__mark">
+        CDD.
+      </Link>
 
       <nav className="navbar__links" aria-label="Navigation principale">
-        {LINKS.map((label, index) => (
-          <a
-            key={label}
-            href={index === 0 ? '#' : `#${label.toLowerCase()}`}
-            className="navbar__link"
-            aria-current={index === 0 ? 'page' : undefined}
+        {LINKS.map(({ label, to }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === '/'}
+            className={({ isActive }) =>
+              isActive ? 'navbar__link navbar__link--active' : 'navbar__link'
+            }
           >
             {label}
-          </a>
+          </NavLink>
         ))}
       </nav>
 
-      <a href="#cours" className="navbar__cta">
+      <Link to="/cours" className="navbar__cta">
         Rejoindre
-      </a>
+      </Link>
     </motion.header>
   )
 }

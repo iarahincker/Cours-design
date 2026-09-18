@@ -1,0 +1,122 @@
+.resources {
+  padding: 1rem var(--container-padding) 7rem;
+}
+
+.resources__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.resources__filter {
+  position: relative;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  background: transparent;
+  color: var(--color-ink-soft);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.resources__filter[aria-selected='true'] {
+  color: var(--color-bg);
+}
+
+.resources__filter-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--color-ink);
+  z-index: 0;
+}
+
+.resources__filter-label {
+  position: relative;
+  z-index: 1;
+}
+
+.resources__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.resource-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.6rem 1.5rem 1.75rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-soft);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+  border-color: var(--color-ink);
+  box-shadow: 0 20px 34px -26px rgba(22, 22, 26, 0.4);
+}
+
+.resource-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--dot-color, var(--color-accent));
+}
+
+.resource-card--vocabulaire {
+  --dot-color: #6f8f7a;
+}
+
+.resource-card--references {
+  --dot-color: var(--color-accent);
+}
+
+.resource-card--artistes {
+  --dot-color: #16161a;
+}
+
+.resource-card--methodes {
+  --dot-color: #3d4c63;
+}
+
+.resource-card--pedagogie {
+  --dot-color: #a5713f;
+}
+
+.resource-card__category {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.resource-card__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.resource-card__description {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
+@media (max-width: 1100px) {
+  .resources__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .resources__grid {
+    grid-template-columns: 1fr;
+  }
+}
