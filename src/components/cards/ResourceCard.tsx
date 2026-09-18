@@ -7,6 +7,7 @@ const CATEGORY_CLASS: Record<Resource['category'], string> = {
   Références: 'resource-card--references',
   'Artistes & designers': 'resource-card--artistes',
   Méthodes: 'resource-card--methodes',
+  Outils: 'resource-card--outils',
   'Ressources pédagogiques': 'resource-card--pedagogie',
 }
 

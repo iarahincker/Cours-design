@@ -14,7 +14,8 @@
   --gallery-ink: #f4f2ec;
   --gallery-ink-soft: rgba(244, 242, 236, 0.62);
   --gallery-line: rgba(244, 242, 236, 0.12);
-  --gallery-accent: #d98a5e;
+  --gallery-accent: #c2977e;
+  --gallery-metal: linear-gradient(120deg, #cfd2d6 0%, #9a9ea3 45%, #6d7075 100%);
   --gallery-glass-blur: 18px;
   --shadow-float: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
   --shadow-deep: 0 60px 120px -50px rgba(0, 0, 0, 0.7);

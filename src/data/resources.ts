@@ -3,6 +3,7 @@ export const RESOURCE_CATEGORIES = [
   'Références',
   'Artistes & designers',
   'Méthodes',
+  'Outils',
   'Ressources pédagogiques',
 ] as const
 
@@ -116,6 +117,25 @@ export const resources: Resource[] = [
     category: 'Méthodes',
     title: 'Carnet de recherche',
     description: 'Trace continue du processus, des doutes et des trouvailles.',
+  },
+  {
+    id: 'o1',
+    category: 'Outils',
+    title: 'Affinity Designer',
+    description: "Illustration vectorielle accessible, adaptée à un usage en classe.",
+  },
+  {
+    id: 'o2',
+    category: 'Outils',
+    title: 'Blender',
+    description: 'Modélisation 3D libre — utile pour prototyper un volume avant réalisation.',
+  },
+  {
+    id: 'o3',
+    category: 'Outils',
+    title: 'Cricut / découpe vinyle',
+    description: 'Découpe de précision pour gabarits textile, signalétique et prototypage.',
+    classIds: ['seconde-mode', 'premiere-agora'],
   },
   {
     id: 'p1',

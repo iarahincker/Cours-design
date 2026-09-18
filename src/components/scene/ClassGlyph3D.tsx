@@ -31,11 +31,11 @@ function MaintenanceGlyph() {
     <group ref={group}>
       <mesh castShadow>
         <icosahedronGeometry args={[0.72, 0]} />
-        <meshStandardMaterial color="#6b7686" roughness={0.35} metalness={0.4} flatShading />
+        <meshStandardMaterial color="#7b8894" roughness={0.35} metalness={0.4} flatShading />
       </mesh>
       <mesh ref={rim} rotation={[Math.PI / 2.2, 0, 0]}>
         <torusGeometry args={[1.15, 0.07, 16, 48]} />
-        <meshStandardMaterial color="#3d434c" roughness={0.3} metalness={0.55} />
+        <meshStandardMaterial color="#454c54" roughness={0.3} metalness={0.55} />
       </mesh>
       {bolts}
     </group>
@@ -55,7 +55,7 @@ function ModeGlyph() {
     <mesh ref={mesh} rotation={[0.35, 0, 0.12]} castShadow>
       <planeGeometry args={[1.9, 1.9, 48, 48]} />
       <MeshDistortMaterial
-        color="#efe4d8"
+        color="#d9c3ba"
         distort={0.42}
         speed={1.8}
         roughness={0.3}
@@ -92,15 +92,15 @@ function AgoraGlyph() {
     <group ref={group}>
       <mesh castShadow>
         <icosahedronGeometry args={[0.58, 0]} />
-        <meshStandardMaterial color="#52735f" roughness={0.4} metalness={0.15} />
+        <meshStandardMaterial color="#5f6f66" roughness={0.4} metalness={0.15} />
       </mesh>
       <mesh ref={orbitA} castShadow>
         <tetrahedronGeometry args={[0.34, 0]} />
-        <meshStandardMaterial color="#8aa593" roughness={0.5} metalness={0.1} />
+        <meshStandardMaterial color="#93a099" roughness={0.5} metalness={0.1} />
       </mesh>
       <mesh ref={orbitB} castShadow>
         <boxGeometry args={[0.32, 0.32, 0.32]} />
-        <meshStandardMaterial color="#33473c" roughness={0.4} metalness={0.2} />
+        <meshStandardMaterial color="#414f47" roughness={0.4} metalness={0.2} />
       </mesh>
     </group>
   )
@@ -119,11 +119,11 @@ function PrepaMetiersGlyph() {
     <group ref={group}>
       <mesh>
         <icosahedronGeometry args={[1.05, 1]} />
-        <meshBasicMaterial color="#a2916d" wireframe />
+        <meshBasicMaterial color="#8b899c" wireframe />
       </mesh>
       <mesh ref={core} castShadow>
         <octahedronGeometry args={[0.6, 0]} />
-        <meshStandardMaterial color="#b6a37e" roughness={0.4} metalness={0.2} />
+        <meshStandardMaterial color="#9b96ab" roughness={0.4} metalness={0.2} />
       </mesh>
     </group>
   )
@@ -140,11 +140,11 @@ function EsfGlyph() {
     <group ref={group}>
       <mesh rotation={[Math.PI / 2.3, 0, 0]} castShadow>
         <torusGeometry args={[0.82, 0.26, 24, 48]} />
-        <meshStandardMaterial color="#9c6b62" roughness={0.5} metalness={0.1} />
+        <meshStandardMaterial color="#8a7568" roughness={0.5} metalness={0.1} />
       </mesh>
       <mesh rotation={[0, Math.PI / 2.3, Math.PI / 6]} castShadow>
         <torusGeometry args={[0.64, 0.2, 24, 48]} />
-        <meshStandardMaterial color="#c69086" roughness={0.45} metalness={0.08} />
+        <meshStandardMaterial color="#b17a5c" roughness={0.4} metalness={0.15} />
       </mesh>
     </group>
   )
@@ -172,7 +172,7 @@ function ClassGlyph3D({ filiere }: ClassGlyph3DProps) {
       <ambientLight intensity={0.9} />
       <directionalLight position={[2, 3, 2]} intensity={1.2} />
       <directionalLight position={[-2, 1, 1]} intensity={0.5} />
-      <pointLight position={[-2, -1, -1]} intensity={0.3} color="#d98a5e" />
+      <pointLight position={[-2, -1, -1]} intensity={0.3} color="#c2977e" />
       <Float speed={1.6} rotationIntensity={0.4} floatIntensity={1.1}>
         <GlyphMesh filiere={filiere} />
       </Float>

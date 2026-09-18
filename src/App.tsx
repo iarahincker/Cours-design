@@ -9,6 +9,7 @@ import Portfolio from './pages/Portfolio'
 import PortfolioDetail from './pages/PortfolioDetail'
 import Projets from './pages/Projets'
 import Ressources from './pages/Ressources'
+import MonEspace from './pages/MonEspace'
 
 function App() {
   const location = useLocation()
@@ -26,6 +27,7 @@ function App() {
           <Route path="/portfolio/:projectId" element={<PortfolioDetail />} />
           <Route path="/projets" element={<Projets />} />
           <Route path="/ressources" element={<Ressources />} />
+          <Route path="/mon-espace" element={<MonEspace />} />
         </Routes>
       </AnimatePresence>
     </>

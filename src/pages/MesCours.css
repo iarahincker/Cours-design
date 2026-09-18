@@ -14,16 +14,27 @@
   z-index: 2;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 0 var(--container-padding);
   margin-bottom: 1rem;
+}
+
+.mes-cours-gallery__filter-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1 1 auto;
 }
 
 .mes-cours-gallery__filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.mes-cours-gallery__filters--ghost {
+  opacity: 0.85;
 }
 
 .mes-cours-gallery__filter {
@@ -38,6 +49,11 @@
   font-size: 0.8rem;
   cursor: pointer;
   transition: color 0.3s ease;
+}
+
+.mes-cours-gallery__filter--ghost {
+  padding: 0.42rem 0.9rem;
+  font-size: 0.72rem;
 }
 
 .mes-cours-gallery__filter[aria-selected='true'] {

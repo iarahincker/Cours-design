@@ -40,6 +40,10 @@
   --dot-color: #3d4c63;
 }
 
+.resource-card--outils {
+  --dot-color: #7b8894;
+}
+
 .resource-card--pedagogie {
   --dot-color: #a5713f;
 }

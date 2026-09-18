@@ -54,6 +54,17 @@ function GalleryClassCard({ schoolClass, offset, spacing, onSelect }: GalleryCla
         filter: `blur(${blur}px)`,
       }}
       transition={{ type: 'spring', stiffness: 220, damping: 30, mass: 0.7 }}
+      whileHover={
+        isActive
+          ? { y: -8, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }
+          : {
+              scale: scale + 0.1,
+              opacity: 1,
+              filter: 'blur(0px)',
+              y: -10,
+              transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+            }
+      }
       onClick={activate}
       onKeyDown={handleKeyDown}
       role="button"

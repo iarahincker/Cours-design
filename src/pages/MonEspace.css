@@ -1,0 +1,104 @@
+.mon-espace {
+  min-height: 100vh;
+  padding-bottom: 6rem;
+  background:
+    radial-gradient(60% 45% at 90% 0%, rgba(194, 151, 126, 0.1), transparent 60%),
+    var(--gallery-bg);
+}
+
+.mon-espace__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0 var(--container-padding);
+}
+
+.mon-espace__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.85rem 1.9rem 2.1rem;
+  border-radius: 24px;
+  border: 1px solid var(--gallery-line);
+  background: var(--gallery-surface);
+  backdrop-filter: blur(var(--gallery-glass-blur));
+  -webkit-backdrop-filter: blur(var(--gallery-glass-blur));
+}
+
+.mon-espace__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mon-espace__count {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--gallery-ink);
+}
+
+.mon-espace__view {
+  font-size: 0.78rem;
+  color: var(--gallery-ink-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.mon-espace__view:hover {
+  color: var(--gallery-ink);
+}
+
+.mon-espace__title {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.mon-espace__description {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--gallery-ink-soft);
+  flex: 1;
+}
+
+.mon-espace__file {
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 0.72rem;
+  color: var(--gallery-accent);
+  background: rgba(244, 242, 236, 0.05);
+  padding: 0.3rem 0.55rem;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.mon-espace__add {
+  margin-top: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px dashed var(--gallery-line);
+  background: transparent;
+  color: var(--gallery-ink-soft);
+  font-size: 0.82rem;
+  cursor: not-allowed;
+}
+
+.mon-espace__note {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  padding: 0 var(--container-padding);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--gallery-ink-soft);
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .mon-espace__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .mon-espace__grid {
+    grid-template-columns: 1fr;
+  }
+}

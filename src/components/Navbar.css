@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.5rem var(--container-padding);
+  padding: 1.35rem var(--container-padding);
   background: linear-gradient(to bottom, rgba(246, 244, 240, 0.55), transparent);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -20,40 +20,76 @@
   background: linear-gradient(to bottom, rgba(14, 15, 18, 0.6), transparent);
 }
 
-.navbar__mark {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.navbar__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
   text-decoration: none;
   color: var(--color-ink);
+  flex-shrink: 0;
+}
+
+.navbar__brand-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.navbar__brand-sub {
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  color: var(--color-ink-soft);
+}
+
+.navbar--on-dark .navbar__brand {
+  color: var(--gallery-ink);
+}
+
+.navbar--on-dark .navbar__brand-sub {
+  color: var(--gallery-ink-soft);
 }
 
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.25rem);
-  padding: 0.5rem 1.5rem;
+  gap: clamp(1rem, 2vw, 1.9rem);
+  padding: 0.5rem 1.4rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid var(--color-line);
   backdrop-filter: blur(10px);
 }
 
+.navbar--on-dark .navbar__links {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--gallery-line);
+}
+
 .navbar__link {
   position: relative;
   flex-shrink: 0;
   white-space: nowrap;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   text-decoration: none;
   color: var(--color-ink-soft);
   letter-spacing: 0.01em;
   transition: color 0.25s ease;
 }
 
+.navbar--on-dark .navbar__link {
+  color: var(--gallery-ink-soft);
+}
+
 .navbar__link:hover,
 .navbar__link--active {
   color: var(--color-ink);
+}
+
+.navbar--on-dark .navbar__link:hover,
+.navbar--on-dark .navbar__link--active {
+  color: var(--gallery-ink);
 }
 
 .navbar__link::after {
@@ -63,7 +99,7 @@
   right: 100%;
   bottom: -4px;
   height: 1px;
-  background: var(--color-ink);
+  background: currentColor;
   transition: right 0.3s ease;
 }
 
@@ -72,7 +108,48 @@
   right: 0;
 }
 
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.navbar__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.navbar__icon-button:hover {
+  border-color: var(--color-ink);
+  background: rgba(22, 22, 26, 0.05);
+}
+
+.navbar--on-dark .navbar__icon-button {
+  color: var(--gallery-ink);
+  border-color: var(--gallery-line);
+}
+
+.navbar--on-dark .navbar__icon-button:hover {
+  border-color: var(--gallery-ink);
+  background: rgba(244, 242, 236, 0.06);
+}
+
 .navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-size: 0.8rem;
   text-decoration: none;
   color: var(--color-ink);
@@ -85,17 +162,17 @@
   white-space: nowrap;
 }
 
+.navbar__cta-icon {
+  display: none;
+}
+
 .navbar__cta:hover {
   background: var(--color-ink);
   color: var(--color-bg);
 }
 
-.navbar--on-dark .navbar__mark,
 .navbar--on-dark .navbar__cta {
   color: var(--gallery-ink);
-}
-
-.navbar--on-dark .navbar__cta {
   border-color: var(--gallery-ink);
 }
 
@@ -104,15 +181,25 @@
   color: var(--gallery-bg);
 }
 
+@media (max-width: 1100px) {
+  .navbar__brand-sub {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .navbar {
     padding: 1.1rem 1.25rem;
   }
 
+  .navbar__brand-title {
+    font-size: 0.78rem;
+  }
+
   .navbar__links {
     gap: 0.85rem;
     padding: 0.4rem 0.9rem;
-    max-width: calc(100vw - 8.5rem);
+    max-width: calc(100vw - 12rem);
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -126,6 +213,17 @@
   }
 
   .navbar__cta {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .navbar__cta-icon {
+    display: block;
+  }
+
+  .navbar__cta-label {
     display: none;
   }
 }
