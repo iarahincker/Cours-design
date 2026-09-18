@@ -2,14 +2,24 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
 import PageHeader from '../components/PageHeader'
-import ClassCard from '../components/cards/ClassCard'
 import EmptyState from '../components/EmptyState'
-import { classes, SECTIONS, type Section } from '../data/classes'
-import { FILIERE_FILTERS, type Filiere } from '../data/filieres'
+import ClassCarousel from '../components/gallery/ClassCarousel'
+import { classes, type SchoolClass } from '../data/classes'
 import './MesCours.css'
 
-const LEVEL_FILTERS: Array<Section | 'Tout'> = ['Tout', ...SECTIONS]
-const FILIERE_FILTER_OPTIONS: Array<Filiere | 'Tout'> = ['Tout', ...FILIERE_FILTERS]
+const FILTERS = ['Toutes', 'Seconde', 'Première', 'Terminale', '3PM', 'BTS ESF'] as const
+type FilterValue = (typeof FILTERS)[number]
+
+function matchesFilter(schoolClass: SchoolClass, filter: FilterValue) {
+  if (filter === 'Toutes') return true
+  if (filter === '3PM') return schoolClass.filiere === '3PM'
+  if (filter === 'BTS ESF') return schoolClass.filiere === 'BTS ESF'
+  return (
+    schoolClass.section === filter &&
+    schoolClass.filiere !== '3PM' &&
+    schoolClass.filiere !== 'BTS ESF'
+  )
+}
 
 function normalize(value: string) {
   return value
@@ -19,123 +29,76 @@ function normalize(value: string) {
 }
 
 function MesCours() {
-  const [levelFilter, setLevelFilter] = useState<Section | 'Tout'>('Tout')
-  const [filiereFilter, setFiliereFilter] = useState<Filiere | 'Tout'>('Tout')
+  const [filter, setFilter] = useState<FilterValue>('Toutes')
   const [search, setSearch] = useState('')
-
-  const visibleSections = levelFilter === 'Tout' ? SECTIONS : [levelFilter]
 
   const query = normalize(search.trim())
 
-  const bySection = useMemo(() => {
-    return visibleSections.map((section) => {
-      const items = classes.filter((c) => {
-        if (c.section !== section) return false
-        if (filiereFilter !== 'Tout' && c.filiere !== filiereFilter) return false
-        if (query && !normalize(`${c.name} ${c.description} ${c.filiere}`).includes(query)) {
-          return false
-        }
-        return true
-      })
-      return { section, items }
+  const filtered = useMemo(() => {
+    return classes.filter((c) => {
+      if (!matchesFilter(c, filter)) return false
+      if (query && !normalize(`${c.name} ${c.tagline} ${c.filiere}`).includes(query)) {
+        return false
+      }
+      return true
     })
-  }, [visibleSections, filiereFilter, query])
-
-  const totalResults = bySection.reduce((sum, s) => sum + s.items.length, 0)
+  }, [filter, query])
 
   return (
     <PageTransition>
-      <PageHeader
-        eyebrow="Portail pédagogique"
-        title="Mes cours"
-        lead="Toutes les classes, du CAP au BTS : séquences, projets, exercices, ressources et évaluations, organisés par niveau et par filière."
-      />
+      <div className="gallery-theme mes-cours-gallery">
+        <PageHeader
+          theme="dark"
+          eyebrow="Cours de design"
+          title="Mes cours"
+          lead="Explorer · Créer · Expérimenter · Transmettre"
+        />
 
-      <section className="mes-cours">
-        <div className="mes-cours__filters">
-          <div className="mes-cours__filter-row" role="tablist" aria-label="Filtrer par niveau">
-            {LEVEL_FILTERS.map((level) => (
+        <div className="mes-cours-gallery__controls">
+          <div className="mes-cours-gallery__filters" role="tablist" aria-label="Filtrer les classes">
+            {FILTERS.map((item) => (
               <button
-                key={level}
+                key={item}
                 type="button"
                 role="tab"
-                aria-selected={levelFilter === level}
-                className="mes-cours__filter"
-                onClick={() => setLevelFilter(level)}
+                aria-selected={filter === item}
+                className="mes-cours-gallery__filter"
+                onClick={() => setFilter(item)}
               >
-                {levelFilter === level && (
+                {filter === item && (
                   <motion.span
-                    layoutId="mescours-level-active"
-                    className="mes-cours__filter-pill"
+                    layoutId="mescours-gallery-filter"
+                    className="mes-cours-gallery__filter-pill"
                     transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                   />
                 )}
-                <span className="mes-cours__filter-label">{level}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="mes-cours__filter-row" role="tablist" aria-label="Filtrer par filière">
-            {FILIERE_FILTER_OPTIONS.map((filiere) => (
-              <button
-                key={filiere}
-                type="button"
-                role="tab"
-                aria-selected={filiereFilter === filiere}
-                className="mes-cours__filter mes-cours__filter--ghost"
-                onClick={() => setFiliereFilter(filiere)}
-              >
-                {filiereFilter === filiere && (
-                  <motion.span
-                    layoutId="mescours-filiere-active"
-                    className="mes-cours__filter-pill"
-                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                  />
-                )}
-                <span className="mes-cours__filter-label">{filiere}</span>
+                <span className="mes-cours-gallery__filter-label">{item}</span>
               </button>
             ))}
           </div>
 
           <input
             type="search"
-            className="mes-cours__search"
-            placeholder="Rechercher une classe…"
+            className="mes-cours-gallery__search"
+            placeholder="Rechercher…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             aria-label="Rechercher une classe"
           />
         </div>
 
-        {totalResults === 0 ? (
-          <EmptyState
-            title="Aucune classe ne correspond"
-            hint="Essayez un autre niveau, une autre filière, ou modifiez votre recherche."
-          />
+        {filtered.length === 0 ? (
+          <div className="mes-cours-gallery__empty">
+            <EmptyState
+              theme="dark"
+              title="Aucune classe ne correspond"
+              hint="Essayez un autre filtre ou modifiez votre recherche."
+            />
+          </div>
         ) : (
-          bySection.map(
-            ({ section, items }) =>
-              items.length > 0 && (
-                <div className="mes-cours__section" key={section}>
-                  <motion.h2
-                    className="mes-cours__section-title"
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    {section}
-                  </motion.h2>
-                  <div className="mes-cours__grid">
-                    {items.map((schoolClass, index) => (
-                      <ClassCard key={schoolClass.id} schoolClass={schoolClass} index={index} />
-                    ))}
-                  </div>
-                </div>
-              ),
-          )
+          <ClassCarousel items={filtered} />
         )}
-      </section>
+      </div>
     </PageTransition>
   )
 }

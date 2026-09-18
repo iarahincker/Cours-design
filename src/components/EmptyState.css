@@ -21,3 +21,15 @@
   color: var(--color-ink-soft);
   line-height: 1.55;
 }
+
+.empty-state--dark {
+  border-color: var(--gallery-line);
+}
+
+.empty-state--dark .empty-state__title {
+  color: var(--gallery-ink);
+}
+
+.empty-state--dark .empty-state__hint {
+  color: var(--gallery-ink-soft);
+}

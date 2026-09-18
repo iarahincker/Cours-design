@@ -5,6 +5,8 @@ import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import MesCours from './pages/MesCours'
 import ClassDetail from './pages/ClassDetail'
+import Portfolio from './pages/Portfolio'
+import PortfolioDetail from './pages/PortfolioDetail'
 import Projets from './pages/Projets'
 import Ressources from './pages/Ressources'
 
@@ -20,6 +22,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/mes-cours" element={<MesCours />} />
           <Route path="/mes-cours/:classId" element={<ClassDetail />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:projectId" element={<PortfolioDetail />} />
           <Route path="/projets" element={<Projets />} />
           <Route path="/ressources" element={<Ressources />} />
         </Routes>

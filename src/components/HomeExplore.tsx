@@ -10,14 +10,20 @@ const DESTINATIONS = [
     description: 'Toutes les classes, de la 2nde au BTS, par niveau et par filière.',
   },
   {
-    to: '/projets',
+    to: '/portfolio',
     index: '02',
+    title: 'Portfolio',
+    description: 'Une galerie immersive des réalisations des élèves.',
+  },
+  {
+    to: '/projets',
+    index: '03',
     title: 'Projets',
     description: 'Une galerie des réalisations produites en atelier.',
   },
   {
     to: '/ressources',
-    index: '03',
+    index: '04',
     title: 'Ressources',
     description: 'Vocabulaire, références et méthodes pour aller plus loin.',
   },

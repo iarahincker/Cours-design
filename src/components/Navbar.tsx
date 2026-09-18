@@ -1,18 +1,24 @@
 import { motion } from 'framer-motion'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
 const LINKS = [
   { label: 'Accueil', to: '/' },
   { label: 'Mes cours', to: '/mes-cours' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Projets', to: '/projets' },
   { label: 'Ressources', to: '/ressources' },
 ]
 
+const DARK_ROUTES = ['/mes-cours', '/portfolio']
+
 function Navbar() {
+  const { pathname } = useLocation()
+  const onDark = DARK_ROUTES.some((route) => pathname.startsWith(route))
+
   return (
     <motion.header
-      className="navbar"
+      className={onDark ? 'navbar navbar--on-dark' : 'navbar'}
       initial={{ opacity: 0, y: -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}

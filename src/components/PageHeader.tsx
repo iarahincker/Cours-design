@@ -5,11 +5,12 @@ interface PageHeaderProps {
   eyebrow: string
   title: string
   lead: string
+  theme?: 'light' | 'dark'
 }
 
-function PageHeader({ eyebrow, title, lead }: PageHeaderProps) {
+function PageHeader({ eyebrow, title, lead, theme = 'light' }: PageHeaderProps) {
   return (
-    <header className="page-header">
+    <header className={theme === 'dark' ? 'page-header page-header--dark' : 'page-header'}>
       <motion.span
         className="page-header__eyebrow"
         initial={{ opacity: 0, y: 16 }}

@@ -4,12 +4,13 @@ import './EmptyState.css'
 interface EmptyStateProps {
   title: string
   hint: string
+  theme?: 'light' | 'dark'
 }
 
-function EmptyState({ title, hint }: EmptyStateProps) {
+function EmptyState({ title, hint, theme = 'light' }: EmptyStateProps) {
   return (
     <motion.div
-      className="empty-state"
+      className={theme === 'dark' ? 'empty-state empty-state--dark' : 'empty-state'}
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}

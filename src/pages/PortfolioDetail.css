@@ -1,0 +1,207 @@
+.portfolio-detail {
+  min-height: 100vh;
+  background:
+    radial-gradient(60% 40% at 90% 0%, rgba(217, 138, 94, 0.1), transparent 60%),
+    var(--gallery-bg);
+  padding-bottom: 6rem;
+}
+
+.portfolio-detail__back {
+  position: relative;
+  display: inline-block;
+  margin: 6.5rem var(--container-padding) 0;
+  font-size: 0.85rem;
+  color: var(--gallery-ink-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.portfolio-detail__back:hover {
+  color: var(--gallery-ink);
+}
+
+.portfolio-detail__hero {
+  position: relative;
+  margin: 2rem var(--container-padding) 0;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid var(--gallery-line);
+  box-shadow: var(--shadow-deep);
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.portfolio-detail__cover {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.portfolio-detail__intro {
+  position: relative;
+  z-index: 1;
+  padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: linear-gradient(to top, rgba(6, 6, 8, 0.85) 0%, rgba(6, 6, 8, 0) 65%);
+  width: 100%;
+  color: #f4f2ec;
+}
+
+.portfolio-detail__category {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.portfolio-detail__title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+.portfolio-detail__meta {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.portfolio-detail__body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3.5rem var(--container-padding) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.portfolio-detail__description {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--gallery-ink);
+}
+
+.portfolio-detail__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.portfolio-detail__section h2 {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gallery-accent);
+  margin-bottom: 0.85rem;
+}
+
+.portfolio-detail__section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--gallery-ink-soft);
+}
+
+.portfolio-detail__problematique {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--gallery-ink);
+}
+
+.portfolio-detail__section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--gallery-ink-soft);
+  line-height: 1.6;
+}
+
+.portfolio-detail__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.portfolio-detail__gallery img {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.portfolio-detail__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gallery-line);
+}
+
+.portfolio-detail__class-link {
+  font-size: 0.9rem;
+  color: var(--gallery-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gallery-line);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.25s ease;
+}
+
+.portfolio-detail__class-link:hover {
+  border-color: var(--gallery-ink);
+}
+
+.portfolio-detail__competences {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.portfolio-detail__competences-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gallery-ink-soft);
+}
+
+.portfolio-detail__competences ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-detail__competences li {
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--gallery-line);
+  color: var(--gallery-ink-soft);
+}
+
+@media (max-width: 640px) {
+  .portfolio-detail__hero {
+    margin: 1.5rem var(--container-padding) 0;
+    min-height: 46vh;
+    border-radius: 24px;
+  }
+
+  .portfolio-detail__intro {
+    padding: 2rem 1.5rem;
+  }
+
+  .portfolio-detail__gallery {
+    grid-template-columns: 1fr;
+  }
+}

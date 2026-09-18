@@ -1,0 +1,28 @@
+.portfolio-cursor-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.portfolio-cursor {
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  background: var(--gallery-ink);
+  color: var(--gallery-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .portfolio-cursor-wrap {
+    display: none;
+  }
+}

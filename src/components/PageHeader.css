@@ -29,6 +29,18 @@
   color: var(--color-ink-soft);
 }
 
+.page-header--dark .page-header__title {
+  color: var(--gallery-ink);
+}
+
+.page-header--dark .page-header__lead {
+  color: var(--gallery-ink-soft);
+}
+
+.page-header--dark .page-header__eyebrow {
+  color: var(--gallery-accent);
+}
+
 @media (max-width: 640px) {
   .page-header {
     padding: 7rem var(--container-padding) 2rem;
