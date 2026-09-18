@@ -4,7 +4,7 @@ import './Navbar.css'
 
 const LINKS = [
   { label: 'Accueil', to: '/' },
-  { label: 'Cours', to: '/cours' },
+  { label: 'Mes cours', to: '/mes-cours' },
   { label: 'Projets', to: '/projets' },
   { label: 'Ressources', to: '/ressources' },
 ]
@@ -36,7 +36,7 @@ function Navbar() {
         ))}
       </nav>
 
-      <Link to="/cours" className="navbar__cta">
+      <Link to="/mes-cours" className="navbar__cta">
         Rejoindre
       </Link>
     </motion.header>

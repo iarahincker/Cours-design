@@ -1,0 +1,335 @@
+.class-detail__back {
+  position: relative;
+  display: inline-block;
+  margin: 6.5rem var(--container-padding) 0;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.class-detail__back:hover {
+  color: var(--color-ink);
+}
+
+.class-detail .page-header {
+  padding-top: 1.5rem;
+}
+
+.class-detail__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  padding: 0 var(--container-padding);
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.class-detail__tab {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0 0 0.9rem;
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.class-detail__tab[aria-selected='true'] {
+  color: var(--color-ink);
+}
+
+.class-detail__tab-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 999px;
+}
+
+.class-detail__panel {
+  padding: 0 var(--container-padding) 7rem;
+  min-height: 30vh;
+}
+
+/* Sequences */
+
+.class-detail__sequences {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.sequence-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.85rem 1.9rem 2.1rem;
+  border-radius: 22px;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-soft);
+}
+
+.sequence-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sequence-card__duree {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
+.sequence-card__competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sequence-card__competences li {
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
+}
+
+.sequence-card__title {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.sequence-card__problematique {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-ink-soft);
+  line-height: 1.55;
+}
+
+.sequence-card__details {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.sequence-card__block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sequence-card__label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.sequence-card__block ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+.sequence-card__references {
+  font-style: italic;
+  color: var(--color-ink-soft);
+}
+
+.sequence-card__toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.sequence-card__toggle:hover {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+/* Projects / resources tabs reuse card components, just need a grid wrapper */
+
+.class-detail__projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1.75rem;
+}
+
+.class-detail__resources {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+/* Exercises */
+
+.class-detail__exercises {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.exercise-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-soft);
+}
+
+.exercise-card__duree {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.exercise-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.exercise-card__description {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
+/* Evaluations */
+
+.class-detail__evaluations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.evaluation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--eval-color, var(--color-accent));
+  background: var(--color-bg-soft);
+}
+
+.evaluation-card--formative {
+  --eval-color: #6f8f7a;
+}
+
+.evaluation-card--sommative {
+  --eval-color: #3d4c63;
+}
+
+.evaluation-card--certificative {
+  --eval-color: var(--color-accent);
+}
+
+.evaluation-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.evaluation-card__type {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--eval-color, var(--color-accent));
+}
+
+.evaluation-card__periode {
+  font-size: 0.75rem;
+  color: var(--color-ink-soft);
+}
+
+.evaluation-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.evaluation-card__description {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
+.evaluation-card__competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+}
+
+.evaluation-card__competences li {
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.24rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
+}
+
+@media (max-width: 1100px) {
+  .class-detail__sequences {
+    grid-template-columns: 1fr;
+  }
+
+  .class-detail__projects,
+  .class-detail__resources,
+  .class-detail__exercises,
+  .class-detail__evaluations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .class-detail__back {
+    margin-top: 6rem;
+  }
+
+  .class-detail__projects,
+  .class-detail__resources,
+  .class-detail__exercises,
+  .class-detail__evaluations {
+    grid-template-columns: 1fr;
+  }
+}

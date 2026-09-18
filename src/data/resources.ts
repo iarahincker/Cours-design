@@ -13,6 +13,7 @@ export interface Resource {
   category: ResourceCategory
   title: string
   description: string
+  classIds?: string[]
 }
 
 export const resources: Resource[] = [
@@ -46,6 +47,7 @@ export const resources: Resource[] = [
     category: 'Références',
     title: 'Bauhaus (1919–1933)',
     description: "École allemande fondatrice, réunion de l'art, de l'artisanat et de l'industrie.",
+    classIds: ['seconde-agora', 'premiere-agora'],
   },
   {
     id: 'r2',
@@ -76,6 +78,7 @@ export const resources: Resource[] = [
     category: 'Artistes & designers',
     title: 'Charlotte Perriand',
     description: "L'art de vivre modernisé par l'architecture d'intérieur.",
+    classIds: ['bts-esf'],
   },
   {
     id: 'a3',
@@ -94,6 +97,7 @@ export const resources: Resource[] = [
     category: 'Méthodes',
     title: 'Moodboard',
     description: "Cartographie sensible d'une intention avant de dessiner la première ligne.",
+    classIds: ['seconde-mode', 'terminale-mode'],
   },
   {
     id: 'm2',
@@ -138,3 +142,7 @@ export const resources: Resource[] = [
     description: 'Les notions clés illustrées, pour réviser en un coup d’œil.',
   },
 ]
+
+export function getResourcesByClass(classId: string): Resource[] {
+  return resources.filter((r) => r.classIds?.includes(classId))
+}

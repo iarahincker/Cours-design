@@ -63,7 +63,7 @@ function Hero() {
 
         <motion.div className="hero__actions" variants={item}>
           <MotionLink
-            to="/cours"
+            to="/mes-cours"
             className="hero__button"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}

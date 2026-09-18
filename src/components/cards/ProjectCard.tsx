@@ -1,6 +1,7 @@
-import { useRef, type MouseEvent } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useTilt } from '../../hooks/useTilt'
 import type { Project } from '../../data/projects'
+import './ProjectCard.css'
 
 interface ProjectCardProps {
   project: Project
@@ -8,27 +9,8 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, index }: ProjectCardProps) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  const x = useMotionValue(0.5)
-  const y = useMotionValue(0.5)
-  const springConfig = { stiffness: 200, damping: 22, mass: 0.4 }
-  const rotateX = useSpring(useTransform(y, [0, 1], [8, -8]), springConfig)
-  const rotateY = useSpring(useTransform(x, [0, 1], [-8, 8]), springConfig)
-  const glareX = useTransform(x, [0, 1], ['0%', '100%'])
-  const glareY = useTransform(y, [0, 1], ['0%', '100%'])
-
-  function handleMouseMove(event: MouseEvent<HTMLDivElement>) {
-    const bounds = ref.current?.getBoundingClientRect()
-    if (!bounds) return
-    x.set((event.clientX - bounds.left) / bounds.width)
-    y.set((event.clientY - bounds.top) / bounds.height)
-  }
-
-  function handleMouseLeave() {
-    x.set(0.5)
-    y.set(0.5)
-  }
+  const { ref, rotateX, rotateY, glareX, glareY, onMouseMove, onMouseLeave } =
+    useTilt<HTMLDivElement>()
 
   return (
     <motion.article
@@ -42,8 +24,8 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         ref={ref}
         className="project-card__frame"
         style={{ rotateX, rotateY, transformPerspective: 900 }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
         whileHover={{ scale: 1.015 }}
       >
         <motion.div

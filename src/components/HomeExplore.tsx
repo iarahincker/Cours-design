@@ -4,10 +4,10 @@ import './HomeExplore.css'
 
 const DESTINATIONS = [
   {
-    to: '/cours',
+    to: '/mes-cours',
     index: '01',
-    title: 'Cours',
-    description: 'Cinq disciplines, des arts appliqués à la culture design.',
+    title: 'Mes cours',
+    description: 'Toutes les classes, de la 2nde au BTS, par niveau et par filière.',
   },
   {
     to: '/projets',

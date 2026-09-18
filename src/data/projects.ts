@@ -6,6 +6,7 @@ export interface Project {
   description: string
   gradient: string
   featured?: boolean
+  classIds?: string[]
 }
 
 export const projects: Project[] = [
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     description: 'Système signalétique modulaire pour un campus des arts appliqués.',
     gradient: 'linear-gradient(155deg, #efe6d8 0%, #b55a34 60%, #7a3a20 100%)',
     featured: true,
+    classIds: ['premiere-agora', 'terminale-agora'],
   },
   {
     id: 'assise-plis',
@@ -25,6 +27,7 @@ export const projects: Project[] = [
     year: '2024',
     description: 'Chaise pliée en tôle, structure minimale et geste unique.',
     gradient: 'linear-gradient(155deg, #e9e5dc 0%, #6c6a63 60%, #302f2b 100%)',
+    classIds: ['terminale-maintenance-usinage'],
   },
   {
     id: 'trame-vivante',
@@ -33,6 +36,7 @@ export const projects: Project[] = [
     year: '2025',
     description: 'Motif génératif tissé, inspiré des structures cellulaires.',
     gradient: 'linear-gradient(155deg, #eef2ea 0%, #6f8f7a 60%, #35473c 100%)',
+    classIds: ['seconde-mode', 'premiere-mode'],
   },
   {
     id: 'revue-contrepoint',
@@ -76,3 +80,7 @@ export const projects: Project[] = [
     gradient: 'linear-gradient(155deg, #ece7dd 0%, #7c7568 60%, #3c382f 100%)',
   },
 ]
+
+export function getProjectsByClass(classId: string): Project[] {
+  return projects.filter((p) => p.classIds?.includes(classId))
+}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import type { Resource } from '../../data/resources'
+import './ResourceCard.css'
 
 const CATEGORY_CLASS: Record<Resource['category'], string> = {
   Vocabulaire: 'resource-card--vocabulaire',
